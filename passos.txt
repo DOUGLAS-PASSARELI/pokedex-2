@@ -1,0 +1,20 @@
+Configuração do Git Local:
+
+git config --global user.name *nome de usúario*
+git config --global user.email *email*
+git clone *link do repositório*
+
+Criar um projeto MVC:
+
+dotnet new mvc -o Pokedex
+
+Executar o projeto:
+
+dotnet watch run
+
+
+Salvando no Git:
+
+git add .
+git commit -m "Inicio dos códigos da página inicial"
+git push
