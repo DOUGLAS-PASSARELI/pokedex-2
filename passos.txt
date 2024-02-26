@@ -18,3 +18,11 @@ Salvando no Git:
 git add .
 git commit -m "Inicio dos códigos da página inicial"
 git push
+
+Restaurar projeto: 
+
+dotnet restore
+
+Limpar projeto: 
+
+dotnet clear
