@@ -13,10 +13,8 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
     public IActionResult Index()
-    {
-        // Criar um objeto com o nome do tipo lista de Pokemon 
+    {   // Criar um objeto com o nome do tipo lista de Pokemon 
         List<Pokemon> pokemons = [];
         using (StreamReader leitor = new("Data\\pokemons.json"))
         {
@@ -33,11 +31,26 @@ public class HomeController : Controller
         ViewData ["Tipos"] = tipos;
         return View(pokemons);
     }
-
     public IActionResult Details(int id)
     {
-        
-        return View();
+        List<Pokemon> pokemons = [];
+        using (StreamReader leitor = new("Data\\pokemons.json "))
+        {
+            string dados = leitor.ReadToEnd();
+            pokemons = JsonSerializer.Deserialize<List<Pokemon>>(dados);
+
+        }
+        List<Tipo> tipos =[];
+        using (StreamReader leitor = new("Data\\tipos.json "))
+        {
+            string dados = leitor.ReadToEnd();
+            tipos = JsonSerializer.Deserialize<List<Tipo>>(dados);
+        }
+        ViewData["tipos"] = tipos;
+        var pokemon =  pokemons
+            .Where(p => p.Numero == id)
+            .FirstOrDefault();
+        return View(pokemon);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
