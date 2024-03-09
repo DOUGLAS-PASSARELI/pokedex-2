@@ -17,8 +17,4 @@ public class Pokemon
         Tipo = new List<string>();
 
     }
-
-    
-
-
 }
